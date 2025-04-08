@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ArticlesController;
 use App\Http\Middleware\SessionAuthenticate;
 use App\Http\Controllers\DashboardController;
 
@@ -37,5 +39,23 @@ use App\Http\Controllers\DashboardController;
         // Reset Password
         Route::get('/reset-password', [UserController::class, 'resetPasswordPage'])->name('resetPasswordPage');
         Route::post('/reset-password', [UserController::class, 'resetPassword'])->name('resetPassword');
+    
+        // Articles Routes
+        Route::get('/articles',                 [ArticlesController::class, 'articlesPage'])->name('articlesPage');
+        Route::get('/create-article',           [ArticlesController::class, 'articleSavePage'])->name('articleSavePage');
+        Route::post('/create-article',          [ArticlesController::class, 'articleCreate'])->name('articleCreate');
+        Route::post('/update-article',          [ArticlesController::class, 'articleUpdate'])->name('articleUpdate');
+        Route::get('/list-article',             [ArticlesController::class, 'articleList'])->name('articleList');
+        Route::post('/article-by-id',           [ArticlesController::class, 'articleById'])->name('articleById');
+        Route::get('/delete-article/{id}',      [ArticlesController::class, 'articleDelete'])->name('articleDelete');
+        
+        // Tags Routes
+        Route::post('/create-tag',              [TagController::class, 'CreateTag'])->name('tag.create');
+        Route::get('/list-tag',                 [TagController::class, 'TagList'])->name('tag.list');
+        Route::post('/tag-by-id',               [TagController::class, 'TagById']);
+        Route::post('/update-tag',              [TagController::class, 'TagUpdate'])->name('tag.update');
+        Route::get('/delete-tag/{id}',          [TagController::class, 'TagDelete'])->name('tag.delete');
+        Route::get('/TagPage',                  [TagController::class, 'TagPage'])->name('TagPage');
+        Route::get('/TagSavePage',              [TagController::class, 'TagSavePage'])->name('TagSavePage');
     });
 ?>
