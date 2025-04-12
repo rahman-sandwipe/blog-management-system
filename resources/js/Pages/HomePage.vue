@@ -1,12 +1,27 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import NavLayout from '../Layout/NavLayout.vue';
+defineProps({
+  posts: Array
+});
 </script>
 
 <template>
     <NavLayout>
         <div class="container">
             <div class="row justify-content-center">
+
+                <div v-if="posts.length">
+                    <div v-for="post in posts" :key="post.id" class="mb-4 p-4 border rounded">
+                        <h2 class="text-xl font-semibold">{{ post.title }}</h2>
+                        <p>{{ post.content }}</p>
+                        <span class="text-sm text-gray-500">Visibility: {{ post.visibility }}</span>
+                    </div>
+                </div>
+                <div v-else>
+                    <p>No posts found.</p>
+                </div>
+
 
                 <div class="col-md-4 center-screen">
                     <div class="card">
