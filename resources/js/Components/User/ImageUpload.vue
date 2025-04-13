@@ -3,21 +3,17 @@
         <label for="image">
             <img :src="(preview || currentImage) ?? 'placeholder.png'" class="img-thumbnail" height="50px" width="50px" />
         </label>
-        <input
-            @input="imageSelected($event)"
-            type="file"
-            name="image"
-            id="image" />
+        <input @input="imageSelected($event)" type="file" name="image" id="image" />
     </div>
 </template>
 
 <script setup>
     import { ref } from "vue";
     const props = defineProps({
-        productImage: String,
+        userImage: String,
     })
 
-    const currentImage = props.productImage ? props.productImage : 'placeholder.png'
+    const currentImage = props.userImage ? props.userImage : 'placeholder.png'
     const preview = ref(currentImage)
 
     const emit = defineEmits(['image'])

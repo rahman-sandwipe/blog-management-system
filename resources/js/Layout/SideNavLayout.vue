@@ -5,6 +5,12 @@
                 <a id="MenuBar" @click="NavOpenClose" class="icon-nav mx-0 my-1 h5">
                     <i class="fa text-white fa-bars"></i>
                 </a>
+
+                <div class="d-flex align-items-center">
+                    <div class="nav-brand">
+                        <img src="../Assets/img/logo.svg" width="40" />
+                    </div>
+                </div>
             </div>
         </nav>
         <div id="sideNav" class="side-nav-open">
@@ -27,26 +33,15 @@
                 <span class="side-bar-item-caption">Tags</span>
             </Link>
 
-            <Link href="/ProductPage" class="side-bar-item">
-                <span class="side-bar-item-icon"><i class="fa fa-box text-green" /></span>
-                <span class="side-bar-item-caption">Product</span>
-            </Link>
-
-            <Link href="/create-sale" class="side-bar-item">
-                <span class="side-bar-item-icon"><i class="fa fa-shopping-cart text-green" /></span>
-                <span class="side-bar-item-caption">Create Sale</span>
-            </Link>
-
-            <Link href="/InvoiceListPage" class="side-bar-item">
-                <span class="side-bar-item-icon"><i class="fa fa-file-invoice-dollar text-green" /></span>
-                <span class="side-bar-item-caption">Invoice</span>
-            </Link>
-
-            <Link href="/ProfilePage" class="side-bar-item">
+            <Link href="/profile" class="side-bar-item">
                 <span class="side-bar-item-icon"><i class="fa fa-user-circle text-green" /></span>
                 <span class="side-bar-item-caption">Profile</span>
             </Link>
 
+            <Link href="/change-password" class="side-bar-item">
+                <span class="side-bar-item-icon"><i class="fa fa-lock text-green" /></span>
+                <span class="side-bar-item-caption">Change Password</span>
+            </Link>
             <Link href="/logout" class="side-bar-item">
                 <span class="side-bar-item-icon"><i class="fa fa-sign-out-alt text-green" /></span>
                 <span class="side-bar-item-caption">Logout</span>

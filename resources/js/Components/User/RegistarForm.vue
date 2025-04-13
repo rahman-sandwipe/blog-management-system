@@ -30,8 +30,8 @@
                                     </div>
 
                                     <div class="col-12 p-2">
-                                        <label for="image">Product Image:</label> <br>
-                                        <ImageUpload :productImage="form.image" @image="(e)=>form.image = e"/>
+                                        <label for="image">Avatar:</label> <br>
+                                        <ImageUpload :userImage="form.image" @image="(e)=>form.image = e"/>
                                     </div>
 
                                     <div class="col-12 p-2">

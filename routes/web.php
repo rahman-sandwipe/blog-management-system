@@ -22,24 +22,27 @@ use App\Http\Controllers\DashboardController;
     Route::get('/', [HomeController::class, 'homePage'])->name('homePage');
 
 
-    Route::get('/register', [UserController::class, 'registerPage'])->name('registerPage');
-    Route::post('/register', [UserController::class, 'userRegister']);
-    Route::get('/login', [UserController::class, 'loginPage'])->name('loginPage');
-    Route::post('/login', [UserController::class, 'userLogin']);
-    
-    Route::get('/forgot-password', [UserController::class, 'forgotPasswordPage'])->name('forgotPasswordPage');
-    Route::post('forget-password', [UserController::class, 'forgetPassword'])->name('forgetPassword');
-    Route::get('/verify-otp', [UserController::class, 'verifyOTPPage'])->name('verifyOTPPage');
-    Route::post('/verify-otp', [UserController::class, 'verifyOTP'])->name('verifyOTP');
+    // Unauthenticated Users Routes
+    Route::get('/register',         [UserController::class, 'registerPage'])->name('registerPage');
+    Route::post('/register',        [UserController::class, 'userRegister']);
+    Route::get('/login',            [UserController::class, 'loginPage'])->name('loginPage');
+    Route::post('/login',           [UserController::class, 'userLogin']);
+    Route::get('/forgot-password',  [UserController::class, 'forgotPasswordPage'])->name('forgotPasswordPage');
+    Route::post('forget-password',  [UserController::class, 'forgetPassword'])->name('forgetPassword');
+    Route::get('/verify-otp',       [UserController::class, 'verifyOTPPage'])->name('verifyOTPPage');
+    Route::post('/verify-otp',      [UserController::class, 'verifyOTP'])->name('verifyOTP');
 
     
     Route::middleware(SessionAuthenticate::class)->group(function () {
-        Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-        Route::get('logout', [UserController::class, 'userLogout'])->name('userLogout');
-        // Reset Password
-        Route::get('/reset-password', [UserController::class, 'resetPasswordPage'])->name('resetPasswordPage');
-        Route::post('/reset-password', [UserController::class, 'resetPassword'])->name('resetPassword');
-    
+        Route::get('dashboard',                 [DashboardController::class, 'dashboard'])->name('dashboard');
+        
+        Route::get('logout',                    [UserController::class, 'userLogout'])->name('userLogout');
+        Route::get('/reset-password',           [UserController::class, 'resetPasswordPage'])->name('resetPasswordPage');
+        Route::post('/reset-password',          [UserController::class, 'resetPassword'])->name('resetPassword');
+        Route::get('/profile',                  [UserController::class, 'profilePage']);
+        Route::post('/user-update',             [UserController::class, 'userUpdate']);
+        Route::get('/change-password',          [UserController::class, 'changePasswordPage'])->name('changePasswordPage');
+        Route::post('/change-password',         [UserController::class, 'changePassword']);
         // Articles Routes
         Route::get('/articles',                 [ArticlesController::class, 'articlesPage'])->name('articlesPage');
         Route::get('/create-article',           [ArticlesController::class, 'articleSavePage'])->name('articleSavePage');
